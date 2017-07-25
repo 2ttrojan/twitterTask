@@ -95,10 +95,10 @@ Request e.g.
             }
 
 Validation
-userId cannot be null
-followeeId cannot be null
-user and followee user must exist
-userId not equals followeeId
+ userId cannot be null
+ followeeId cannot be null
+ user and followee user must exist
+ userId not equals followeeId
 
 # Getting followees posts by user id - Scenario name Timeline
 
