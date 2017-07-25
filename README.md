@@ -95,7 +95,7 @@ Request e.g.
             }
 
 Validation
- userId cannot be null
+ userId cannot be null<br />
  followeeId cannot be null
  user and followee user must exist
  userId not equals followeeId
