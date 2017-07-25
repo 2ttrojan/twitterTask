@@ -51,18 +51,18 @@ public class PostService {
         return post;
     }
 
-    public Set<Post> getFollowingPosts(Long userId) {
+    public Set<Post> getFolloweesPosts(Long userId) {
         Set<Post> resultSet = new TreeSet<>();
 
-        HashSet<Long> followingSet = dataStorage.getFollowingRepository().get(userId);
-        if (followingSet == null) {
+        HashSet<Long> followeeSet = dataStorage.getFolloweeRepository().get(userId);
+        if (followeeSet == null) {
             return Collections.emptySet();
         }
 
-        for (Long followingId : followingSet) {
-            TreeSet<Post> followingUserPosts = dataStorage.getPostRepository().get(followingId);
-            if (followingUserPosts != null && !followingUserPosts.isEmpty()) {
-                resultSet.addAll(followingUserPosts);
+        for (Long followeeId : followeeSet) {
+            TreeSet<Post> followeesPosts = dataStorage.getPostRepository().get(followeeId);
+            if (followeesPosts != null && !followeesPosts.isEmpty()) {
+                resultSet.addAll(followeesPosts);
             }
         }
 

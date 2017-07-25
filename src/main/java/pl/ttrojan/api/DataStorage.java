@@ -20,7 +20,7 @@ public class DataStorage {
     private long nextPostId;
     private Map<Long, User> userRepository;
     private Map<Long, TreeSet<Post>> postRepository;
-    private Map<Long, HashSet<Long>> followingRepository;
+    private Map<Long, HashSet<Long>> followeeRepository;
     private Map<Long, HashSet<Long>> followersRepository;
 
     @PostConstruct
@@ -29,7 +29,7 @@ public class DataStorage {
         nextPostId = 1L;
         userRepository = new HashMap<>();
         postRepository = new HashMap<>();
-        followingRepository = new HashMap<>();
+        followeeRepository = new HashMap<>();
         followersRepository = new HashMap<>();
     }
 
@@ -41,8 +41,8 @@ public class DataStorage {
         return postRepository;
     }
 
-    public Map<Long, HashSet<Long>> getFollowingRepository() {
-        return followingRepository;
+    public Map<Long, HashSet<Long>> getFolloweeRepository() {
+        return followeeRepository;
     }
 
     public Map<Long, HashSet<Long>> getFollowersRepository() {

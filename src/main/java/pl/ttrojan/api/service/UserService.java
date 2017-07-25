@@ -36,12 +36,12 @@ public class UserService {
         return user;
     }
 
-    public Set<Long> getFollowing(Long userId) {
-        HashSet<Long> followingSet = dataStorage.getFollowingRepository().get(userId);
-        if (followingSet == null) {
+    public Set<Long> getFollowees(Long userId) {
+        HashSet<Long> followeeSet = dataStorage.getFolloweeRepository().get(userId);
+        if (followeeSet == null) {
             return Collections.emptySet();
         }
-        return followingSet;
+        return followeeSet;
     }
 
     public Set<Long> getFollowers(Long userId) {
@@ -53,12 +53,12 @@ public class UserService {
     }
 
     public void follow(Long userId, Long followId) {
-        HashSet<Long> followingSet = dataStorage.getFollowingRepository().get(userId);
-        if (followingSet == null) {
-            followingSet = new HashSet<>();
+        HashSet<Long> followeeSet = dataStorage.getFolloweeRepository().get(userId);
+        if (followeeSet == null) {
+            followeeSet = new HashSet<>();
         }
-        followingSet.add(followId);
-        dataStorage.getFollowingRepository().put(userId, followingSet);
+        followeeSet.add(followId);
+        dataStorage.getFolloweeRepository().put(userId, followeeSet);
 
         HashSet<Long> followerSet = dataStorage.getFollowersRepository().get(userId);
         if (followerSet == null) {

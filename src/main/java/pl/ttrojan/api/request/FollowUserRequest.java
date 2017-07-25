@@ -11,13 +11,13 @@ public class FollowUserRequest implements Serializable {
     @NotNull
     private Long userId;
     @NotNull
-    private Long followId;
+    private Long followeeId;
 
     public Long getUserId() {
         return userId;
     }
 
-    public Long getFollowId() {
-        return followId;
+    public Long getFolloweeId() {
+        return followeeId;
     }
 }

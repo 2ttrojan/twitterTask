@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import pl.ttrojan.api.request.FollowUserRequest;
 import pl.ttrojan.api.model.User;
+import pl.ttrojan.api.request.FollowUserRequest;
 import pl.ttrojan.api.service.UserService;
 
 @RestController
@@ -33,17 +32,21 @@ public class UserController {
     @RequestMapping(value = "/follow", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> follow(@RequestBody FollowUserRequest request) {
 
+        if (request.getFolloweeId().equals(request.getUserId())) {
+            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        }
+
         User user = userService.getById(request.getUserId());
         if (user == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         }
 
-        User followUser = userService.getById(request.getFollowId());
+        User followUser = userService.getById(request.getFolloweeId());
         if (followUser == null) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         }
 
-        userService.follow(request.getUserId(), request.getFollowId());
+        userService.follow(request.getUserId(), request.getFolloweeId());
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

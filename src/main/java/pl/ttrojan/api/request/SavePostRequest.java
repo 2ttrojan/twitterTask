@@ -1,6 +1,7 @@
 package pl.ttrojan.api.request;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.io.Serializable;
 public class SavePostRequest implements Serializable {
     @NotNull
     private Long userId;
+    @NotEmpty
     @Length(max = 140, message = "Message too long")
     private String message;
 

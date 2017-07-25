@@ -40,16 +40,16 @@ public class PostController {
         return new ResponseEntity<>(allUserPost, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/getFollowingsPosts/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Set<Post>> getFollowingsPosts(@PathVariable("id") long userId) {
+    @RequestMapping(value = "/getFolloweesPosts/{id}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Set<Post>> getFolloweesPosts(@PathVariable("id") long userId) {
 
         User user = userService.getById(userId);
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        Set<Post> followingPosts = postService.getFollowingPosts(userId);
-        return new ResponseEntity<>(followingPosts, HttpStatus.OK);
+        Set<Post> followeesPosts = postService.getFolloweesPosts(userId);
+        return new ResponseEntity<>(followeesPosts, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
