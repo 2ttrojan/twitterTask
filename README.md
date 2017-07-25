@@ -6,17 +6,17 @@ mvn clean install
 
 mvn spring-boot:run
 
-#Testing
+# Testing
 
 You can use for example Postman to test api
 
-#Api method:
+# Api method:
 Note that I added extra validation.
 Below you will can find more information about it.
 
 All method have response format: JSON
 
-#Posting - Scenario name Posting
+# Posting - Scenario name Posting
 
 Request format: JSON
 Method - POST
@@ -43,7 +43,7 @@ Response e.g.:
                 "message": "New Post"
             }
 
-#Getting user details by user id
+# Getting user details by user id
 
 Method - GET
 URL: localhost:8080/rest/user/byId/{id}
@@ -56,7 +56,7 @@ Response e.g.
                 "surname": "MockSurname 2"
             }
 
-#Getting user posts by user id - Scenario name Wall
+# Getting user posts by user id - Scenario name Wall
 
 Method - GET
 URL: localhost:8080/rest/post/getUserPosts/{id}
@@ -82,7 +82,7 @@ Response e.g.
                 }
             ]
 
-#Follow other user - Scenario name Following
+# Follow other user - Scenario name Following
 
 Request format: JSON
 Method - POST
@@ -100,7 +100,7 @@ followeeId cannot be null
 user and followee user must exist
 userId not equals followeeId
 
-#Getting followees posts by user id - Scenario name Timeline
+# Getting followees posts by user id - Scenario name Timeline
 
 Method - GET
 URL: localhost:8080/rest/post/getFolloweesPosts/{id}
